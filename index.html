@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Смена картинок по клику</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; margin-top: 40px; }
+    #picture { width: 250px; height: 250px; object-fit: contain; cursor: pointer; display: block; margin: 0 auto 10px; }
+    #title { width: 250px; text-align: center; }
+  </style>
+</head>
+<body>
+  <h2>Кликните на картинку, чтобы сменить её</h2>
+
+  <img id="picture" src="images/1.png" alt="картинка">
+  <input type="text" id="title" readonly>
+
+  <script>
+    var pictures = [
+      "angry.png",
+      "scared.png",
+      "serious.png",
+      "offended.png",
+      "tired.png"
+    ];
+
+    var current = 0;
+    var img = document.getElementById("picture");
+    var title = document.getElementById("title");
+
+    function show() {
+      img.src = "images/" + pictures[current];
+      title.value = pictures[current];
+    }
+
+    img.onclick = function () {
+      current = (current + 1) % pictures.length;
+      show();
+    };
+
+    show();
+  </script>
+</body>
+</html>
